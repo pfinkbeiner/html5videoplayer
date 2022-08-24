@@ -10,21 +10,22 @@
 
 namespace HVP\Html5videoplayer\Controller;
 
-use \HVP\Html5videoplayer\Div;
-use \HVP\Html5videoplayer\Domain\Model\Video;
-use \TYPO3\CMS\Core\Database\ConnectionPool;
-use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Core\Utility\HttpUtility;
+use HVP\Html5videoplayer\Div;
+use HVP\Html5videoplayer\Domain\Model\Video;
+use HVP\Html5videoplayer\Domain\Repository\VideoRepository;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
-use \TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager;
-use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
-use \TYPO3\CMS\Extbase\Mvc\Web\Response;
-use \TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
-use \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
-use \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
-use \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use TYPO3\CMS\Extbase\Configuration\FrontendConfigurationManager;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
+use TYPO3\CMS\Extbase\Mvc\Web\Response;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
+use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
+use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Abstract Command Controller
@@ -44,10 +45,13 @@ class VideoplayerController extends ActionController
     /**
      * The video repository
      *
-     * @var \HVP\Html5videoplayer\Domain\Repository\VideoRepository
-     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $videoRepository;
+    protected VideoRepository $videoRepository;
+
+    public function __construct(VideoRepository $videoRepository)
+    {
+        $this->videoRepository = $videoRepository;
+    }
 
     /**
      * Check if the header is included

@@ -3,13 +3,13 @@ defined('TYPO3_MODE') || die();
 
 (static function ($extKey = 'html5videoplayer') {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'html5videoplayer',
+        'Html5videoplayer',
         'PiVideoplayer',
         [
-            \HVP\Html5videoplayer\Controller\VideoplayerControler::class => 'list,overview,detail',
+            \HVP\Html5videoplayer\Controller\VideoplayerController::class => 'list,overview,detail',
         ],
         [
-            \HVP\Html5videoplayer\Controller\VideoplayerControler::class => 'overview',
+            \HVP\Html5videoplayer\Controller\VideoplayerController::class => 'overview',
         ]
     );
 

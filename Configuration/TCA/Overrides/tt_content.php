@@ -3,7 +3,7 @@ defined('TYPO3_MODE') || die();
 
 (static function ($extKey = 'html5videoplayer') {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-        'html5videoplayer',
+        'Html5videoplayer',
         'PiVideoplayer',
         'Videoplayer'
     );
