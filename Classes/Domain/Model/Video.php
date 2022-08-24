@@ -497,7 +497,7 @@ class Video extends AbstractEntity
             $fileUid = substr($media, 5);
 
             if (MathUtility::canBeInterpretedAsInteger($fileUid)) {
-                $fileObject = ResourceFactory::getInstance()
+                $fileObject = GeneralUtility::makeInstance(ResourceFactory::class)
                     ->getFileObject($fileUid);
 
                 if ($fileObject instanceof FileInterface) {
