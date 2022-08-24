@@ -3,9 +3,9 @@ defined('TYPO3_MODE') || die();
 
 (static function ($extKey = 'html5videoplayer') {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('HVP.html5videoplayer', 'PiVideoplayer', [
-        'Videoplayer' => 'list,overview,detail',
+        \HVP\Html5videoplayer\Controller\VideoplayerControler::class => 'list,overview,detail',
     ], [
-        'Videoplayer' => 'overview'
+        \HVP\Html5videoplayer\Controller\VideoplayerControler::class => 'overview',
     ]);
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][$extKey . '_div'] = \HVP\Html5videoplayer\Div::class;
